@@ -17,6 +17,13 @@ def read_image(filename, representation):
     return im
 
 
+def save_image(im):
+    if is_rgb(im):
+        plt.imsave('./new_im.png', im)
+    else:
+        plt.imsave('./new_im.png', im, cmap=plt.cm.gray)
+
+
 def im_to_uint8(im):
     return (im * 255).astype(np.uint8)
 

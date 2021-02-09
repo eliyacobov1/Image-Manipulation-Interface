@@ -22,7 +22,7 @@ class Gui:
     
     def save_image_message(self, im):
         if easygui.buttonbox(SAVE_IMAGE_MSG, "Save image", choices=['Yes', 'No']) == 'Yes':
-            plt.imsave('./new_im.png', im)
+            save_image(im)
             easygui.buttonbox(SAVE_IMAGE_MSG2, 'Attention', choices=['ok'])
             self.back_to_menu()
         
