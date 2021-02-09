@@ -17,6 +17,7 @@ class Gui:
         self.parent = parent
         self.im = None
         self.canvas = None
+        self.show_again = True
         self.menu_image = ImageTk.PhotoImage(Image.open('im1.jfif'))
     
     def save_image_message(self, im):
@@ -53,6 +54,11 @@ class Gui:
             return
         im_as_uint8 = im_to_uint8(im_orig)
         
+        if self.show_again:
+            ans = easygui.buttonbox(WARNING_MSG, 'Notice', choices=['ok', 'Do not Show Again'])
+            if ans == 'Do not Show Again':
+                self.show_again = False
+
         root = Tk()
         self.im = ImageTk.PhotoImage(Image.fromarray(im_as_uint8).resize(size=(500, 500)), master=root)
         self.canvas = Canvas(root, width=500, height=500)
@@ -71,7 +77,6 @@ class Gui:
         
         self.parent.destroy()
         self.parent = root
-        easygui.buttonbox(WARNING_MSG, 'Notice', choices=['ok'])
     
     def main_menu(self):
         """

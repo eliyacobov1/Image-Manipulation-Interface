@@ -3,7 +3,6 @@ import numpy as np
 from skimage import color as sk
 from scipy import signal
 from matplotlib import pyplot as plt
-import cv2
 
 
 def read_image(filename, representation):
